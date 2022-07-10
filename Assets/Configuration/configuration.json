@@ -1,0 +1,629 @@
+{
+  "$id": "1",
+  "Options": [
+    {
+      "$id": "2",
+      "Code": "EDMOM",
+      "Name": "Momentum",
+      "Description": "Comfort that is the hallmark of an inspiring urban SUV. Contrasting exterior details and interior with premium textile upholstery."
+    },
+    {
+      "$id": "3",
+      "Code": "EDINS",
+      "Name": "Inscription",
+      "Description": "The most sophisticated XC40 model. Chrome exterior details, unique wheels and exclusive leather seats create absolute Scandinavian luxury."
+    },
+    {
+      "$id": "4",
+      "Code": "EDRDE",
+      "Name": "R-Design",
+      "Description": "Built for active driving. With gloss black details, unique wheels and a stylishly finished interior."
+    },
+    {
+      "$id": "5",
+      "Code": "PTT3MF",
+      "Name": "T3 manual (160 HP)",
+      "Description": null
+    },
+    {
+      "$id": "6",
+      "Code": "PTT3AF",
+      "Name": "T3 automatic (160 HP)",
+      "Description": null
+    },
+    {
+      "$id": "7",
+      "Code": "PTB4AF",
+      "Name": "B4 mild hybrid (190 HP)",
+      "Description": null
+    },
+    {
+      "$id": "8",
+      "Code": "PTB4AA",
+      "Name": "B4 AWD mild hybrid (190 HP)",
+      "Description": null
+    },
+    {
+      "$id": "9",
+      "Code": "PTB5AA",
+      "Name": "B5 AWD mild hybrid (250 HP)",
+      "Description": null
+    },
+    {
+      "$id": "10",
+      "Code": "ECBS",
+      "Name": "Black Stone",
+      "Description": null
+    },
+    {
+      "$id": "11",
+      "Code": "ECIW",
+      "Name": "Ice White",
+      "Description": null
+    },
+    {
+      "$id": "12",
+      "Code": "ECGS",
+      "Name": "Glacier Silver",
+      "Description": null
+    },
+    {
+      "$id": "13",
+      "Code": "ECDB",
+      "Name": "Denim Blue",
+      "Description": null
+    },
+    {
+      "$id": "14",
+      "Code": "ECFR",
+      "Name": "Fusion Red",
+      "Description": null
+    },
+    {
+      "$id": "15",
+      "Code": "ECIG",
+      "Name": "Its Green",
+      "Description": null
+    },
+    {
+      "$id": "16",
+      "Code": "ICBL",
+      "Name": "Black",
+      "Description": null
+    },
+    {
+      "$id": "17",
+      "Code": "ICWH",
+      "Name": "White",
+      "Description": null
+    },
+    {
+      "$id": "18",
+      "Code": "APL",
+      "Name": "Lighting",
+      "Description": null
+    },
+    {
+      "$id": "19",
+      "Code": "APP",
+      "Name": "Parking",
+      "Description": null
+    },
+    {
+      "$id": "20",
+      "Code": "APT",
+      "Name": "Technology",
+      "Description": null
+    },
+    {
+      "$id": "21",
+      "Code": "APW",
+      "Name": "Winter",
+      "Description": null
+    }
+  ],
+  "Groups": [
+    {
+      "$id": "22",
+      "Name": "Package",
+      "Options": [
+        {
+          "$ref": "2"
+        },
+        {
+          "$ref": "3"
+        },
+        {
+          "$ref": "4"
+        }
+      ],
+      "GroupType": 0,
+      "PreviewType": 1
+    },
+    {
+      "$id": "23",
+      "Name": "Engine",
+      "Options": [
+        {
+          "$ref": "5"
+        },
+        {
+          "$ref": "6"
+        },
+        {
+          "$ref": "7"
+        },
+        {
+          "$ref": "8"
+        },
+        {
+          "$ref": "9"
+        }
+      ],
+      "GroupType": 0,
+      "PreviewType": 0
+    },
+    {
+      "$id": "24",
+      "Name": "Colors",
+      "Options": [
+        {
+          "$ref": "10"
+        },
+        {
+          "$ref": "11"
+        },
+        {
+          "$ref": "12"
+        },
+        {
+          "$ref": "13"
+        },
+        {
+          "$ref": "14"
+        },
+        {
+          "$ref": "15"
+        }
+      ],
+      "GroupType": 0,
+      "PreviewType": 2
+    },
+    {
+      "$id": "25",
+      "Name": "Upholstery",
+      "Options": [
+        {
+          "$ref": "16"
+        },
+        {
+          "$ref": "17"
+        }
+      ],
+      "GroupType": 0,
+      "PreviewType": 0
+    },
+    {
+      "$id": "26",
+      "Name": "Additional packages",
+      "Options": [
+        {
+          "$ref": "18"
+        },
+        {
+          "$ref": "19"
+        },
+        {
+          "$ref": "20"
+        },
+        {
+          "$ref": "21"
+        }
+      ],
+      "GroupType": 1,
+      "PreviewType": 0
+    }
+  ],
+  "OptionRelations": [
+    {
+      "$id": "27",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "5"
+      }
+    },
+    {
+      "$id": "28",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "6"
+      }
+    },
+    {
+      "$id": "29",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "10"
+      }
+    },
+    {
+      "$id": "30",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "11"
+      }
+    },
+    {
+      "$id": "31",
+      "RelationType": 1,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "12"
+      }
+    },
+    {
+      "$id": "32",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "16"
+      }
+    },
+    {
+      "$id": "33",
+      "RelationType": 0,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "17"
+      }
+    },
+    {
+      "$id": "34",
+      "RelationType": 1,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$id": "35",
+      "RelationType": 1,
+      "This": {
+        "$ref": "2"
+      },
+      "To": {
+        "$ref": "19"
+      }
+    },
+    {
+      "$id": "36",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "6"
+      }
+    },
+    {
+      "$id": "37",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "7"
+      }
+    },
+    {
+      "$id": "38",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "8"
+      }
+    },
+    {
+      "$id": "39",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "9"
+      }
+    },
+    {
+      "$id": "40",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "10"
+      }
+    },
+    {
+      "$id": "41",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "11"
+      }
+    },
+    {
+      "$id": "42",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "12"
+      }
+    },
+    {
+      "$id": "43",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "13"
+      }
+    },
+    {
+      "$id": "44",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "14"
+      }
+    },
+    {
+      "$id": "45",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "16"
+      }
+    },
+    {
+      "$id": "46",
+      "RelationType": 0,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "17"
+      }
+    },
+    {
+      "$id": "47",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$id": "48",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "19"
+      }
+    },
+    {
+      "$id": "49",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "20"
+      }
+    },
+    {
+      "$id": "50",
+      "RelationType": 1,
+      "This": {
+        "$ref": "3"
+      },
+      "To": {
+        "$ref": "18"
+      }
+    },
+    {
+      "$id": "51",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "6"
+      }
+    },
+    {
+      "$id": "52",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "7"
+      }
+    },
+    {
+      "$id": "53",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "8"
+      }
+    },
+    {
+      "$id": "54",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "9"
+      }
+    },
+    {
+      "$id": "55",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "10"
+      }
+    },
+    {
+      "$id": "56",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "11"
+      }
+    },
+    {
+      "$id": "57",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "12"
+      }
+    },
+    {
+      "$id": "58",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "13"
+      }
+    },
+    {
+      "$id": "59",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "14"
+      }
+    },
+    {
+      "$id": "60",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "15"
+      }
+    },
+    {
+      "$id": "61",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "16"
+      }
+    },
+    {
+      "$id": "62",
+      "RelationType": 0,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "17"
+      }
+    },
+    {
+      "$id": "63",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "21"
+      }
+    },
+    {
+      "$id": "64",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "19"
+      }
+    },
+    {
+      "$id": "65",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "20"
+      }
+    },
+    {
+      "$id": "66",
+      "RelationType": 1,
+      "This": {
+        "$ref": "4"
+      },
+      "To": {
+        "$ref": "18"
+      }
+    }
+  ]
+}
