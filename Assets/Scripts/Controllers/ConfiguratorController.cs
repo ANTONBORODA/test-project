@@ -56,17 +56,21 @@ namespace Controllers
 
         public void AddOption(Option option)
         {
-            if (_configuration.Options.Contains(option)) return;
-            
-            var groups = option.GetOptionGroups(Data);
-            foreach (var group in groups)
+            if (_configuration.Options.Contains(option))
             {
-                if (group.GroupType != GroupType.SingleSelect) continue;
+                OnPropertyChanged(nameof(Configuration));
+                return;
+            }
+
+            var group = option.GetOptionGroup(Data);
+            if (group.GroupType == GroupType.SingleSelect)
+            {
                 foreach (var groupOption in group.Options)
                 {
-                    RemoveOption(groupOption);
+                    RemoveOptionInternal(groupOption);
                 }
             }
+
             var optionAdded = _configuration.AddOption(option);
             var defaultOptions = option.GetRelatedGroupsDefaultOptionsInContext(_configuration, Data);
             foreach (var defaultOption in defaultOptions)
@@ -80,12 +84,24 @@ namespace Controllers
 
         public void RemoveOption(Option option)
         {
+            var group = option.GetOptionGroup(Data);
+            if (group.GroupType == GroupType.SingleSelect)
+            {
+                OnPropertyChanged(nameof(Configuration));
+                return;
+            }
+
+            RemoveOptionInternal(option);
+        }
+        
+        private void RemoveOptionInternal(Option option)
+        {
             var optionRemoved = _configuration.RemoveOption(option);
             if (optionRemoved)
             {
                 foreach (var relatedOption in option.GetAllRelatedOptions(Data))
                 {
-                    _configuration.RemoveOption(option);
+                    _configuration.RemoveOption(relatedOption);
                 }
             }
             if (optionRemoved)

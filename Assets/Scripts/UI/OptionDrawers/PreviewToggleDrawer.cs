@@ -42,15 +42,15 @@ namespace UI.OptionDrawers
             {
                 case OptionDrawingState.Selected:
                     this.gameObject.SetActive(true);
-                    Toggle.isOn = true;
+                    Toggle.SetIsOnWithoutNotify(true);
                     break;
                 case OptionDrawingState.Unselected:
                     this.gameObject.SetActive(true);
-                    Toggle.isOn = false;
+                    Toggle.SetIsOnWithoutNotify(false);
                     break;
                 case OptionDrawingState.Hidden:
                 default:
-                    Toggle.isOn = false;
+                    Toggle.SetIsOnWithoutNotify(false);
                     this.gameObject.SetActive(false);
                     break;
             }

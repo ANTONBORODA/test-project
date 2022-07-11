@@ -1,17 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
+using System.Linq;
+using Views;
 
-public class CarColor : MonoBehaviour {
+public class CarColor : MonoBehaviour, IOptionVisualizer {
 
-    public List<GameObject> colouredBodyWorkParts = new List<GameObject>();
+    public List<GameObject> colouredBodyWorkParts = new ();
 
-    public List<Material> mColourSet = new List<Material>();
+    public List<OptionCodeMaterialMap> mColourSet = new();
 
-    public List<ReflectionProbe> reflectionProbes = new List<ReflectionProbe>();
+    public List<ReflectionProbe> reflectionProbes = new ();
 
     private int currentColourIndex = 0;
 
+    public IEnumerable<string> SupportedOptionCodes => mColourSet.Select(t => t.Code);
+    
+    public void SetOptionActive(string code)
+    {
+        var map = mColourSet.FirstOrDefault(t => t.Code == code);
+        if (map == null)
+        {
+            Debug.LogError($"Color with code {code} not found");
+            return;
+        }
+        SetPartMaterial(map.Material);
+        currentColourIndex = mColourSet.IndexOf(map);
+    }
 
+    public void SetOptionInactive(string code)
+    {
+    }
 
     public void SetColourByIndex(int index) {
         if (mColourSet.Count == 0) {
@@ -24,7 +42,7 @@ public class CarColor : MonoBehaviour {
             return;
         }
 
-        SetPartMaterial(mColourSet[index]);
+        SetPartMaterial(mColourSet[index].Material);
     }
 
     [ContextMenu("Next")]
@@ -42,13 +60,13 @@ public class CarColor : MonoBehaviour {
             currentColourIndex = 0;
         }
 
-        SetPartMaterial(mColourSet[currentColourIndex]);
+        SetPartMaterial(mColourSet[currentColourIndex].Material);
     }
 
 
     bool IsCarPaint(Material mat)
     {
-        if (mColourSet.Contains(mat))
+        if (mColourSet.Any(t => t.Material == mat))
         {
             return true;
         }
@@ -119,4 +137,5 @@ public class CarColor : MonoBehaviour {
         }
         UpdateReflectionProbes();
     }
+    
 }

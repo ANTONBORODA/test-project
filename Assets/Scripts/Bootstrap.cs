@@ -3,6 +3,7 @@ using Providers;
 using Providers.Configuration;
 using Providers.Previews;
 using Providers.Storage;
+using TinyMessenger;
 using UnityEngine;
 
 public class Bootstrap : MonoBehaviour
@@ -10,6 +11,7 @@ public class Bootstrap : MonoBehaviour
     public void Awake()
     {
         var locator = new ServiceLocator();
+        locator.AddService(typeof(ITinyMessengerHub), new TinyMessengerHub());
         locator.AddService(typeof(IConfigurationDataProvider), FindObjectOfType<DefaultConfigurationDataProvider>());
         locator.AddService(typeof(IPreviewProvider), FindObjectOfType<LocalPreviewProvider>());
         locator.AddService(typeof(IConfigurationStorage), new PlayerPrefsConfigurationStorage());

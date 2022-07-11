@@ -10,7 +10,7 @@ namespace Providers.Storage
     public class PlayerPrefsConfigurationStorage : IConfigurationStorage
     {
         private const string PLAYER_PREFS_CONFIGURATION_STORAGE_KEY = "cfg";
-        
+
         public string[] GetStoredConfigurations()
         {
             var items = GetStoredCollection();
@@ -55,8 +55,16 @@ namespace Providers.Storage
             var items = new PlayerPrefsConfigurationStorageCollection();
             if (PlayerPrefs.HasKey(PLAYER_PREFS_CONFIGURATION_STORAGE_KEY))
             {
-                items = JsonConvert.DeserializeObject<PlayerPrefsConfigurationStorageCollection>(
-                    PlayerPrefs.GetString(PLAYER_PREFS_CONFIGURATION_STORAGE_KEY));
+                try
+                {
+                    items = JsonConvert.DeserializeObject<PlayerPrefsConfigurationStorageCollection>(
+                        PlayerPrefs.GetString(PLAYER_PREFS_CONFIGURATION_STORAGE_KEY));
+                }
+                catch (Exception e)
+                {
+                    Debug.LogError("Unable to deserialize store configuration collection. Collection corrupt?");
+                    PlayerPrefs.DeleteKey(PLAYER_PREFS_CONFIGURATION_STORAGE_KEY);
+                }
             }
 
             return items;

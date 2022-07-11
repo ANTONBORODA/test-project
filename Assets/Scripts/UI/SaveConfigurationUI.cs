@@ -1,5 +1,7 @@
 ﻿using Controllers;
 using Providers;
+using TinyMessenger;
+using TinyMessenger.Events;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,8 +10,6 @@ namespace UI
 {
     public class SaveConfigurationUI : MonoBehaviour
     {
-        public StartPageUI StartPageUI;
-        public ConfigurationUI ConfigurationUI;
         public Button SaveButton;
         public TMP_InputField Name;
 
@@ -17,19 +17,12 @@ namespace UI
         {
             if (string.IsNullOrWhiteSpace(Name.text)) return;
             ServiceLocator.Instance.GetService<ConfiguratorController>().SaveConfiguration(Name.text);
-            TransitionToStartPage();
+            ServiceLocator.Instance.GetService<ITinyMessengerHub>().Publish(new SetStartPageUIStateEvent(this));
         }
 
         public void OnCancelButtonClick()
         {
-            this.gameObject.SetActive(false);
-        }
-
-        private void TransitionToStartPage()
-        {
-            ConfigurationUI.gameObject.SetActive(false);
-            this.gameObject.SetActive(false);
-            StartPageUI.gameObject.SetActive(true);
+            ServiceLocator.Instance.GetService<ITinyMessengerHub>().Publish(new SetConfigurationUIStateEvent(this));
         }
 
         public void Update()

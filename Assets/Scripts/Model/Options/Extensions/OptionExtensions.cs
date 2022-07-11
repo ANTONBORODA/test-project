@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace Model.Options.Extensions
 {
@@ -84,9 +85,11 @@ namespace Model.Options.Extensions
             return null;
         }
 
-        public static IEnumerable<OptionGroup> GetOptionGroups(this Option option, ConfigurationData data)
+        public static OptionGroup GetOptionGroup(this Option option, ConfigurationData data)
         {
-            return data.Groups.Where(t => t.Options.Contains(option));
+            if (data.Groups.Count(t => t.Options.Contains(option)) > 1)
+                Debug.LogWarning($"Option {option.Code} is in more than 1 group. This may lead to undefined behaviour!");
+            return data.Groups.FirstOrDefault(t => t.Options.Contains(option));
         }
         
         private static void GetAllRelatedOptions(this Option option, ConfigurationData data, List<Option> options)

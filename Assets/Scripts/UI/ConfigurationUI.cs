@@ -6,6 +6,8 @@ using Model;
 using Model.Options;
 using Model.Options.Extensions;
 using Providers;
+using TinyMessenger;
+using TinyMessenger.Events;
 using UI.GroupDrawers;
 using UI.OptionDrawers;
 using UnityEngine;
@@ -15,13 +17,12 @@ namespace UI
 {
     public class ConfigurationUI : MonoBehaviour
     {
-        public StartPageUI StartPageUI;
-        public SaveConfigurationUI SaveConfigurationUI;
         public Transform ContentParent;
         public ToggleGroupWithNameAndDescriptionDrawer ToggleGroupWithNameAndDescriptionPrefab;
         public ToggleGroupWithNameDrawer ToggleGroupWithNameTextPrefab;
         public ToggleGroupWithPreviewDrawer ToggleGroupWithPreviewPrefab;
-        
+
+        private ITinyMessengerHub _eventBus;
         private ConfiguratorController _controller;
         private ConfigurationData _configurationData;
 
@@ -30,6 +31,7 @@ namespace UI
 
         private void Awake()
         {
+            _eventBus = ServiceLocator.Instance.GetService<ITinyMessengerHub>();
             _controller = ServiceLocator.Instance.GetService<ConfiguratorController>();
             _controller.PropertyChanged += OnControllerPropertyChanged;
         }
@@ -43,18 +45,12 @@ namespace UI
 
         public void OnSaveButtonClick()
         {
-            SaveConfigurationUI.gameObject.SetActive(true);
+            _eventBus.Publish(new SetSaveConfigurationUIStateEvent(this));
         }
 
         public void OnBackButtonClick()
         {
-            TransitionToStartPage();
-        }
-
-        private void TransitionToStartPage()
-        {
-            this.gameObject.SetActive(false);
-            StartPageUI.gameObject.SetActive(true);
+            _eventBus.Publish(new SetStartPageUIStateEvent(this));
         }
 
         private void OnControllerPropertyChanged(object sender, PropertyChangedEventArgs e)
