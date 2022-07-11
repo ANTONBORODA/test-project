@@ -23,6 +23,7 @@ namespace Controllers
             _subscriptions.Add(_eventBus.Subscribe<SetConfigurationUIStateEvent>(OnSetConfigurationUIStateEvent));
             _subscriptions.Add(_eventBus.Subscribe<SetSaveConfigurationUIStateEvent>(OnSetSaveConfigurationUIStateEvent));
             _subscriptions.Add(_eventBus.Subscribe<SetStartPageUIStateEvent>(OnSetStartPageUIStateEvent));
+            _eventBus.Publish(new SetStartPageUIStateEvent(this));
         }
 
         private void OnSetStartPageUIStateEvent(SetStartPageUIStateEvent obj)
