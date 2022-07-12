@@ -7,6 +7,9 @@ using UnityEngine;
 
 namespace Controllers
 {
+    /// <summary>
+    /// The main controller for UI used for changing UI pages 
+    /// </summary>
     public class UIController : MonoBehaviour
     {
         public GameObject StartPage;

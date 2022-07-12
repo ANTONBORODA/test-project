@@ -3,6 +3,7 @@ using System.ComponentModel;
 using System.Linq;
 using Controllers;
 using Model;
+using Model.Configuration;
 using Model.Options;
 using Model.Options.Extensions;
 using Providers;

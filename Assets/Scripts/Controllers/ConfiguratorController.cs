@@ -3,6 +3,7 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using JetBrains.Annotations;
 using Model;
+using Model.Configuration;
 using Model.Options;
 using Model.Options.Extensions;
 using Providers;
@@ -11,6 +12,10 @@ using Providers.Storage;
 
 namespace Controllers
 {
+    /// <summary>
+    /// The main business logic behind adding and removing options.
+    /// Also propagating events about updates.  
+    /// </summary>
     public class ConfiguratorController : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -54,6 +59,11 @@ namespace Controllers
             Data = _configurationDataProvider.GetConfigurationData();
         }
 
+        /// <summary>
+        /// Adds option to current configuration.
+        /// Single select options will replace each other in the same group 
+        /// </summary>
+        /// <param name="option"></param>
         public void AddOption(Option option)
         {
             if (_configuration.Options.Contains(option))
@@ -82,6 +92,11 @@ namespace Controllers
                 OnPropertyChanged(nameof(Configuration));
         }
 
+        /// <summary>
+        /// Removes the option.
+        /// Single select options are not removed because they cannot be removed
+        /// </summary>
+        /// <param name="option"></param>
         public void RemoveOption(Option option)
         {
             var group = option.GetOptionGroup(Data);

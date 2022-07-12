@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Model.Options;
 
-namespace Model
+namespace Model.Configuration
 {
     public interface IConfiguration
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Model.Configuration;
 using Model.Options;
 using Newtonsoft.Json;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace Providers.Storage
             return items.Items.Select(t => t.Name).ToArray();
         }
 
-        public void StoreConfiguration(Model.Configuration configuration)
+        public void StoreConfiguration(Model.Configuration.Configuration configuration)
         {
             var items = GetStoredCollection();
 
@@ -32,13 +33,13 @@ namespace Providers.Storage
             PlayerPrefs.Save();
         }
 
-        public Model.Configuration LoadConfigurationByName(string name, ConfigurationData data)
+        public Model.Configuration.Configuration LoadConfigurationByName(string name, ConfigurationData data)
         {
             var items = GetStoredCollection();
             var storedConfiguration = items.Items.FirstOrDefault(t => t.Name == name);
             if (storedConfiguration == null) return null;
 
-            var configuration = new Model.Configuration();
+            var configuration = new Model.Configuration.Configuration();
             configuration.Name = name;
             foreach (var option in storedConfiguration.Options)
             {
@@ -70,7 +71,7 @@ namespace Providers.Storage
             return items;
         }
 
-        private PlayerPrefsConfigurationStorageItem ConvertToStoredConfiguration(Model.Configuration configuration)
+        private PlayerPrefsConfigurationStorageItem ConvertToStoredConfiguration(Model.Configuration.Configuration configuration)
         {
             var item = new PlayerPrefsConfigurationStorageItem();
             item.Name = configuration.Name;

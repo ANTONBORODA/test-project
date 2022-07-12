@@ -2,8 +2,11 @@
 using System.Collections.ObjectModel;
 using Model.Options;
 
-namespace Model
+namespace Model.Configuration
 {
+    /// <summary>
+    /// Represents current selected configuration 
+    /// </summary>
     public class Configuration : IConfiguration
     {
         private readonly List<Option> _options = new();
